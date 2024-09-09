@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "lab1_3.Main",
+            "projectName": "Java_3_course_a671e8ee"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "lab1_2.Main",
+            "projectName": "Java_3_course_a671e8ee"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "lab1_1.Main",
+            "projectName": "Java_3_course_a671e8ee"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "lab1_1.Main",
+            "projectName": "lab1_80af431a"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "lab1_2.Main",
+            "projectName": "lab1_80af431a"
+        }
+    ]
+}
