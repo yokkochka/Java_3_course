@@ -1,44 +1,41 @@
 package lab2_3;
 
-import java.io.StringReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-
-    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter string: ");
-        String inputStr = scanner.nextLine().toLowerCase();
-        
-        String alp = "abcdefghujklmnopqrstuvwxyz";
+        String inputStr = scanner.nextLine();
 
-        String key = randomKeyString(alp, inputStr.length());
-        System.out.println("key: " + key);
+        String key = randomKeyString("abcdefghijklmnopqrstuvwxyz", inputStr.length());
+        System.out.println("key strning: " + key);
 
-        key = stringToBits(key);
-        inputStr = stringToBits(inputStr);
-
-        System.out.println("bitsKey: " + key);
-        System.out.println("bitsInputStr: " + inputStr);
-
-        System.out.println("len bitsKey: " + key.length());
-        System.out.println("len bitsInputStr: " + inputStr.length());
-
-        String encryptStr = encrypt(inputStr, key);
-        System.out.println("encrypt: " + encryptStr);
-        
-        encryptStr = bitsToString(encryptStr);
+        String encryptStr = xorEncryptDecrypt(inputStr, key);
         System.out.println("encrypt: " + encryptStr);
 
+        String decrypted = xorEncryptDecrypt(encryptStr, key);
+        System.out.println("decrypt: " + decrypted);
 
-        // String decryptStr = decrypt(alp, encryptStr, key);
-        // System.out.println("decrypt: " + decryptStr);
-
+        try (FileWriter writer = new FileWriter("test.txt", false)) {
+            writer.write(encryptStr);
+            writer.flush();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
         scanner.close();
     }
 
+    public static String xorEncryptDecrypt(String inputStr, String key) {
+        String resStr = "";
+        for (int i = 0; i < inputStr.length(); i++) {
+            resStr += (char) (inputStr.charAt(i) ^ key.charAt(i));
+        }
+        return resStr;
+    }
 
     public static String randomKeyString(String alp, int n) {
         String key = "";
@@ -50,31 +47,4 @@ public class Main {
         }
         return key;
     }
-
-    public static String stringToBits(String str) {
-        StringBuilder bitsStr = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            bitsStr.append(String.format("%8s", Integer.toBinaryString(str.charAt(i))).replace(' ', '0'));
-        }
-        return bitsStr.toString();
-    }
-
-    public static String bitsToString(String bits) {
-        StringBuilder stringStr = new StringBuilder();
-        for (int i = 0; i < bits.length(); i += 8) {
-            String byteStr = bits.substring(i, i + 8);
-            stringStr.append((char) Integer.parseInt(byteStr, 2));
-        }
-        return stringStr.toString();
-    }
-
-
-    public static String encrypt (String inputStr, String key){
-        String encryptStr = "";
-        for (int i = 0; i < inputStr.length(); i++){
-            encryptStr += (inputStr.charAt(i) == key.charAt(i)) ? '0' : '1';
-        }
-        return encryptStr;
-    }
-
 }

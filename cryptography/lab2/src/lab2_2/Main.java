@@ -8,7 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter string: ");
         String inputStr = scanner.nextLine().toLowerCase();
-        
+
         String alp = "фбвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
         String key = randomKeyString(alp, inputStr.length());
