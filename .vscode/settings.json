@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "cryptography/lab1/src",
+        "cryptography/lab2/src",
+        "cryptography/lab3/src"
+    ],
+
+    "java.project.referencedLibraries": []
+}
