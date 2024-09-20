@@ -1,5 +1,6 @@
 package lab3_1;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Main {
@@ -7,83 +8,99 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter p (prime): ");
-        long p = scanner.nextInt();
+        BigInteger p = scanner.nextBigInteger();
 
         System.out.print("Enter q (prime): ");
-        long q = scanner.nextInt();
+        BigInteger q = scanner.nextBigInteger();
 
         System.out.println("q and p: " + q + ' ' + p);
 
-        long n = p * q;
+        BigInteger n = p.multiply(q);
         System.out.println("n: " + n);
 
-        long fi_n = (p - 1) * (q - 1);
+        BigInteger fi_n =
+            p.subtract(BigInteger.valueOf(1)).multiply(q.subtract(BigInteger.valueOf(1)));
         System.out.println("fi_n: " + fi_n);
 
-        long e = find_e(fi_n);
+        BigInteger e = find_e(fi_n);
         System.err.println("e: " + e);
 
-        long d = find_d(e, fi_n);
+        BigInteger d = find_d(e, fi_n);
         System.out.println("d: " + d);
-
 
         System.out.println("private keys: " + e + " " + n);
         System.out.println("public keys: " + d + " " + n);
 
         System.out.print("Enter string: ");
         String inputStr = scanner.nextLine();
-        inputStr = scanner.nextLine();
+        inputStr = scanner.nextLine().toUpperCase();
 
-        String encryptStr = encrypt(inputStr, e, n);
-        System.out.println("encryptStr: " + encryptStr);
+        BigInteger[] encryptStr = new BigInteger[inputStr.length()];
+        encrypt(inputStr, e, n, encryptStr);
+
+        System.out.print("encrypt: ");
+        for (int i = 0; i < inputStr.length(); i++) {
+            System.out.print(encryptStr[i]);
+        }
+
+        System.out.println();
+        String decryptStr = decrypt(encryptStr, d, n);
+        System.out.println("decrypt: " + decryptStr);
 
         scanner.close();
     }
-    
-    public static long find_e(long fi_n){
-        long res_e = 0;
-        for (int i = 0; i < 10; i++){
-            res_e = (int)Math.pow(2, (int)Math.pow(2, i)) + 1;
-            if (gcd(res_e, fi_n) == 1){
+
+    public static BigInteger find_e(BigInteger fi_n) {
+        BigInteger res_e = BigInteger.valueOf(0);
+        System.out.println(res_e);
+        for (int i = 2; i < 10; i++) {
+            res_e = BigInteger.valueOf(i);
+            if (gcd(res_e, fi_n).compareTo(BigInteger.valueOf(1)) == 0) {
+                System.out.println("res: " + res_e);
                 return res_e;
             }
         }
-        return 0;
+        return BigInteger.valueOf(0);
     }
 
-
-    public static long gcd (long a, long b){
-        while (b !=0) {
-            long tmp = a%b;
+    public static BigInteger gcd(BigInteger a, BigInteger b) {
+        while (b.compareTo(BigInteger.valueOf(0)) != 0) {
+            BigInteger tmp = a.mod(b);
             a = b;
             b = tmp;
         }
         return a;
     }
 
-
-    public static long find_d(long e, long fi_n){
-        double d = 0; int i = 1;
-        while (true){
-            d = (double)((fi_n * i) + 1) / e;
-            if (d == (long)d) return (long)d;
+    public static BigInteger find_d(BigInteger e, BigInteger fi_n) {
+        int i = 1;
+        while (true) {
+            BigInteger d = fi_n.multiply(BigInteger.valueOf(i)).add(BigInteger.valueOf(1));
+            if (e.compareTo(BigInteger.valueOf(0)) != 0
+                && (d.mod(e)).compareTo(BigInteger.valueOf(0)) == 0) {
+                return d.divide(e);
+            }
             i++;
         }
     }
 
-
-    public static String encrypt(String inputStr, long e, long n){
-        String encryptStr = "";
-        long c = Character.getNumericValue(inputStr.charAt(0));
-        System.out.println(c);
-        c = ((int)Math.pow(c, e)) % n;
-        System.out.println(c);
-
-
-
-        return encryptStr;
+    public static void encrypt(
+        String inputStr, BigInteger e, BigInteger n, BigInteger[] encryptStr) {
+        for (int i = 0; i < inputStr.length(); i++) {
+            BigInteger c = BigInteger.valueOf(inputStr.charAt(i));
+            c = c.pow(e.intValue());
+            c = c.mod(n);
+            encryptStr[i] = c;
+        }
     }
 
-
-
+    public static String decrypt(BigInteger[] encryptStr, BigInteger d, BigInteger n) {
+        String decryptStr = "";
+        for (int i = 0; i < encryptStr.length; i++) {
+            BigInteger c = encryptStr[i].pow(d.intValue());
+            c = c.mod(n);
+            decryptStr += (char) c.intValue();
+        }
+        return decryptStr;
+    }
 }

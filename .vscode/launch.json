@@ -8,6 +8,20 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
+            "mainClass": "lab3_1.Main",
+            "projectName": "Java_3_course_84a5170f"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "lab1_1.Main",
+            "projectName": "Java_3_course_84a5170f"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
             "mainClass": "lab1_1.Main",
             "projectName": "Java_3_course_a671e8ee"
         },
