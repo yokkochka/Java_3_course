@@ -35,8 +35,10 @@ public class Main {
         String inputStr = scanner.nextLine();
         inputStr = scanner.nextLine().toUpperCase();
 
+        String alf = "ABCDEFGHIJKLMNOPQRSTUVWXYZАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЙЧШЩЪЫЬЭЮЯ., !?()_-1234567890";
+
         BigInteger[] encryptStr = new BigInteger[inputStr.length()];
-        encrypt(inputStr, e, n, encryptStr);
+        encrypt(inputStr, e, n, encryptStr, alf);
 
         System.out.print("encrypt: ");
         for (int i = 0; i < inputStr.length(); i++) {
@@ -44,7 +46,7 @@ public class Main {
         }
 
         System.out.println();
-        String decryptStr = decrypt(encryptStr, d, n);
+        String decryptStr = decrypt(encryptStr, d, n,alf);
         System.out.println("decrypt: " + decryptStr);
 
         scanner.close();
@@ -85,21 +87,21 @@ public class Main {
     }
 
     public static void encrypt(
-        String inputStr, BigInteger e, BigInteger n, BigInteger[] encryptStr) {
+        String inputStr, BigInteger e, BigInteger n, BigInteger[] encryptStr, String alf) {
         for (int i = 0; i < inputStr.length(); i++) {
-            BigInteger c = BigInteger.valueOf(inputStr.charAt(i));
+            BigInteger c = BigInteger.valueOf(alf.indexOf(inputStr.charAt(i)));
             c = c.pow(e.intValue());
             c = c.mod(n);
             encryptStr[i] = c;
         }
     }
 
-    public static String decrypt(BigInteger[] encryptStr, BigInteger d, BigInteger n) {
+    public static String decrypt(BigInteger[] encryptStr, BigInteger d, BigInteger n, String alf) {
         String decryptStr = "";
         for (int i = 0; i < encryptStr.length; i++) {
             BigInteger c = encryptStr[i].pow(d.intValue());
             c = c.mod(n);
-            decryptStr += (char) c.intValue();
+            decryptStr += alf.charAt(c.intValue());
         }
         return decryptStr;
     }
