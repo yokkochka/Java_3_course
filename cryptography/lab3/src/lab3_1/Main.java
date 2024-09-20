@@ -13,8 +13,6 @@ public class Main {
         System.out.print("Enter q (prime): ");
         BigInteger q = scanner.nextBigInteger();
 
-        System.out.println("q and p: " + q + ' ' + p);
-
         BigInteger n = p.multiply(q);
         System.out.println("n: " + n);
 
@@ -35,7 +33,8 @@ public class Main {
         String inputStr = scanner.nextLine();
         inputStr = scanner.nextLine().toUpperCase();
 
-        String alf = "ABCDEFGHIJKLMNOPQRSTUVWXYZАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЙЧШЩЪЫЬЭЮЯ., !?()_-1234567890";
+        String alf =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЙЧШЩЪЫЬЭЮЯ., !?()_-1234567890";
 
         BigInteger[] encryptStr = new BigInteger[inputStr.length()];
         encrypt(inputStr, e, n, encryptStr, alf);
@@ -46,7 +45,7 @@ public class Main {
         }
 
         System.out.println();
-        String decryptStr = decrypt(encryptStr, d, n,alf);
+        String decryptStr = decrypt(encryptStr, d, n, alf);
         System.out.println("decrypt: " + decryptStr);
 
         scanner.close();
@@ -54,11 +53,9 @@ public class Main {
 
     public static BigInteger find_e(BigInteger fi_n) {
         BigInteger res_e = BigInteger.valueOf(0);
-        System.out.println(res_e);
         for (int i = 2; i < 10; i++) {
             res_e = BigInteger.valueOf(i);
             if (gcd(res_e, fi_n).compareTo(BigInteger.valueOf(1)) == 0) {
-                System.out.println("res: " + res_e);
                 return res_e;
             }
         }
