@@ -1,3 +1,8 @@
+// Task 1
+// Implement XOR encryption in any programming language, 
+// encrypt arbitrary data using your cipher 
+// message, then decrypt it.
+
 package lab2_1;
 
 import java.io.FileWriter;

@@ -1,3 +1,9 @@
+// Task 3
+// Implement encryption in any programming language 
+// one-time pad method, encrypt using your cipher 
+// message consisting of binary data (using XOR), followed by 
+// decrypt it.
+
 package lab2_3;
 
 import java.io.FileWriter;

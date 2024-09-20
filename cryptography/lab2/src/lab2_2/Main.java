@@ -1,3 +1,8 @@
+// Task2
+// Implement encryption in any programming language 
+// one-time pad method, encrypt using your cipher 
+// message in Russian, then decrypt it.
+
 package lab2_2;
 
 import java.util.Random;
