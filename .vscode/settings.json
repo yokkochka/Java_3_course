@@ -2,8 +2,11 @@
     "java.project.sourcePaths": [
         "cryptography/lab1/src",
         "cryptography/lab2/src",
-        "cryptography/lab3/src"
+        "cryptography/lab3/src",
+        "cryptography/lab4/scr"
     ],
 
-    "java.project.referencedLibraries": []
+    "java.project.referencedLibraries": [
+        "cryptography/lab4/lib/bcprov-jdk18on-1.78.1.jar"
+    ]
 }

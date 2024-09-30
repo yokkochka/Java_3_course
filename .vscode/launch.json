@@ -9,6 +9,20 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "lab3_1.Main",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "lab4_1.Main",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "lab3_1.Main",
             "projectName": "Java_3_course_84a5170f"
         },
         {
