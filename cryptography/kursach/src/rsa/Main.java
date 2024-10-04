@@ -33,8 +33,7 @@ public class Main {
         String inputStr = scanner.nextLine();
         inputStr = scanner.nextLine().toUpperCase();
 
-        String alf =
-            "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+        String alf = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
         BigInteger[] encryptStr = new BigInteger[inputStr.length()];
         encrypt(inputStr, e, n, encryptStr, alf);
 
@@ -85,8 +84,8 @@ public class Main {
     public static void encrypt(
         String inputStr, BigInteger e, BigInteger n, BigInteger[] encryptStr, String alf) {
         for (int i = 0; i < inputStr.length(); i++) {
-            
-            BigInteger c = BigInteger.valueOf(alf.indexOf(inputStr.charAt(i))).add(BigInteger.valueOf(1));
+            BigInteger c =
+                BigInteger.valueOf(alf.indexOf(inputStr.charAt(i))).add(BigInteger.valueOf(1));
             c = c.pow(e.intValue());
             c = c.mod(n);
             encryptStr[i] = c;
@@ -102,7 +101,4 @@ public class Main {
         }
         return decryptStr;
     }
-
-
-
 }

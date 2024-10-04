@@ -41,7 +41,8 @@ public class Main {
         scanner.close();
     }
 
-    public static BigInteger digital_signature(BigInteger hash_function, BigInteger e, BigInteger n) {
+    public static BigInteger digital_signature(
+        BigInteger hash_function, BigInteger e, BigInteger n) {
         return hash_function.pow(e.intValue()).mod(n);
     }
 

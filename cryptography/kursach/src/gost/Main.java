@@ -9,7 +9,7 @@ public class Main {
         System.out.print("Enter the string to encrypt: ");
         Scanner scanner = new Scanner(System.in);
         String startInputString = scanner.nextLine();
-        
+
         System.out.print("Enter the key: ");
         String key = scanner.nextLine();
 
@@ -27,20 +27,20 @@ public class Main {
 
         fillDictCharToBin(charToBin, binToInt, intToInt);
 
-        int dop =  0;
-        if (startInputString.length() % 8 == 0) dop = 0;
-        else dop = 8 - startInputString.length() % 8;
+        int dop = 0;
+        if (startInputString.length() % 8 == 0)
+            dop = 0;
+        else
+            dop = 8 - startInputString.length() % 8;
         for (int i = 0; i < dop; i++) {
             startInputString += " ";
         }
-        
-        // System.out.println(dop + " " + startInputString.length());
 
+        // System.out.println(dop + " " + startInputString.length());
 
         String inputString = "";
 
-        while (startInputString.length() > 0){
-            
+        while (startInputString.length() > 0) {
             inputString = startInputString.substring(0, 8);
             startInputString = startInputString.substring(8, startInputString.length());
 
@@ -76,7 +76,7 @@ public class Main {
             String fR0X0 = "";
 
             int j = 0;
-            for (int i = 8; i > 0; i--){
+            for (int i = 8; i > 0; i--) {
                 j = binToInt.get(mod2_32.substring(0, 4));
                 mod2_32 = mod2_32.substring(4, mod2_32.length());
                 fR0X0 += intToBinString(binToInt, intToInt.get(i)[j]);
@@ -92,10 +92,9 @@ public class Main {
 
             System.out.println("Encrypted string(L1 + R1): " + r0String + r1String);
         }
-
     }
 
-    public static String xor(String a, String b){
+    public static String xor(String a, String b) {
         String result = "";
         for (int i = 0; i < a.length(); i++) {
             if (a.charAt(i) == b.charAt(i)) {
@@ -107,38 +106,46 @@ public class Main {
         return result;
     }
 
-    public static String intToBinString (Map<String, Integer> map, Integer value) {
+    public static String intToBinString(Map<String, Integer> map, Integer value) {
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             if (value.equals(entry.getValue())) {
                 return entry.getKey();
             }
         }
-        return null; 
+        return null;
     }
-    
+
     public static String summaMod2_32(String a, String b) {
         String result = "";
         int mind = 0;
-        for (int i = a.length()-1; i >= 0; i--) {
-            if (Integer.parseInt(String.valueOf(a.charAt(i))) + Integer.parseInt(String.valueOf(b.charAt(i))) + mind == 0) {
+        for (int i = a.length() - 1; i >= 0; i--) {
+            if (Integer.parseInt(String.valueOf(a.charAt(i)))
+                    + Integer.parseInt(String.valueOf(b.charAt(i))) + mind
+                == 0) {
                 result = "0" + result;
                 mind = 0;
-            } else if (Integer.parseInt(String.valueOf(a.charAt(i))) + Integer.parseInt(String.valueOf(b.charAt(i))) + mind == 1) {
+            } else if (Integer.parseInt(String.valueOf(a.charAt(i)))
+                    + Integer.parseInt(String.valueOf(b.charAt(i))) + mind
+                == 1) {
                 result = "1" + result;
                 mind = 0;
-            } else if (Integer.parseInt(String.valueOf(a.charAt(i))) + Integer.parseInt(String.valueOf(b.charAt(i))) + mind == 2) {
+            } else if (Integer.parseInt(String.valueOf(a.charAt(i)))
+                    + Integer.parseInt(String.valueOf(b.charAt(i))) + mind
+                == 2) {
                 result = "0" + result;
                 mind = 1;
-            } else if (Integer.parseInt(String.valueOf(a.charAt(i))) + Integer.parseInt(String.valueOf(b.charAt(i))) + mind == 3) {
+            } else if (Integer.parseInt(String.valueOf(a.charAt(i)))
+                    + Integer.parseInt(String.valueOf(b.charAt(i))) + mind
+                == 3) {
                 result = "1" + result;
                 mind = 1;
             }
         }
         return result;
     }
-    
 
-    private static void fillDictCharToBin(Map<Character, String> charToBin, Map<String, Integer> binToInt, Map<Integer, int[]> intToInt) {
+    private static void fillDictCharToBin(Map<Character, String> charToBin,
+        Map<String, Integer> binToInt, Map<Integer, int[]> intToInt) {
         charToBin.put('А', "11000000");
         charToBin.put('Б', "11000001");
         charToBin.put('В', "11000010");
@@ -171,7 +178,7 @@ public class Main {
         charToBin.put('Э', "11011101");
         charToBin.put('Ю', "11011110");
         charToBin.put('Я', "11011111");
-        
+
         charToBin.put('а', "11100000");
         charToBin.put('б', "11100001");
         charToBin.put('в', "11100010");
@@ -207,7 +214,7 @@ public class Main {
         charToBin.put(' ', "00010000");
 
         binToInt.put("0000", 0);
-        binToInt.put("0001", 1);    
+        binToInt.put("0001", 1);
         binToInt.put("0010", 2);
         binToInt.put("0011", 3);
         binToInt.put("0100", 4);
@@ -223,18 +230,13 @@ public class Main {
         binToInt.put("1110", 14);
         binToInt.put("1111", 15);
 
-        intToInt.put(8, new int[]{1,15,13,0,5,7,10,4,9,2,3,14,6,11,8,12});
-        intToInt.put(7, new int[]{13,11,4,1,3,15,5,9,0,10,14,7,6,8,2,12});
-        intToInt.put(6, new int[]{4,11,10,0,7,2,1,13,3,6,8,5,9,12,15,14});
-        intToInt.put(5, new int[]{6,12,7,1,5,15,13,8,4,10,9,14,0,3,11,2});
-        intToInt.put(4, new int[]{7,13,10,1,0,8,9,15,14,4,6,12,11,2,5,3});
-        intToInt.put(3, new int[]{5,8,1,13,10,3,4,2,14,15,12,7,6,0,9,11});
-        intToInt.put(2, new int[]{14,11,4,12,6,13,15,10,2,3,8,1,0,7,5,9});
-        intToInt.put(1, new int[]{4,10,9,2,13,8,0,14,6,11,1,12,7,15,5,3});
-
-        
+        intToInt.put(8, new int[] {1, 15, 13, 0, 5, 7, 10, 4, 9, 2, 3, 14, 6, 11, 8, 12});
+        intToInt.put(7, new int[] {13, 11, 4, 1, 3, 15, 5, 9, 0, 10, 14, 7, 6, 8, 2, 12});
+        intToInt.put(6, new int[] {4, 11, 10, 0, 7, 2, 1, 13, 3, 6, 8, 5, 9, 12, 15, 14});
+        intToInt.put(5, new int[] {6, 12, 7, 1, 5, 15, 13, 8, 4, 10, 9, 14, 0, 3, 11, 2});
+        intToInt.put(4, new int[] {7, 13, 10, 1, 0, 8, 9, 15, 14, 4, 6, 12, 11, 2, 5, 3});
+        intToInt.put(3, new int[] {5, 8, 1, 13, 10, 3, 4, 2, 14, 15, 12, 7, 6, 0, 9, 11});
+        intToInt.put(2, new int[] {14, 11, 4, 12, 6, 13, 15, 10, 2, 3, 8, 1, 0, 7, 5, 9});
+        intToInt.put(1, new int[] {4, 10, 9, 2, 13, 8, 0, 14, 6, 11, 1, 12, 7, 15, 5, 3});
     }
-
-
 }
-

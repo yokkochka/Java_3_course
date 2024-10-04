@@ -33,8 +33,7 @@ public class Main {
         String inputStr = scanner.nextLine();
         inputStr = scanner.nextLine().toUpperCase();
 
-        String alf =
-            "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+        String alf = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
 
         System.out.print("Enter h0: ");
         BigInteger h0 = scanner.nextBigInteger();
@@ -46,10 +45,10 @@ public class Main {
     }
 
     public static BigInteger hash(String inputStr, BigInteger h0, BigInteger n, String alf) {
-
         BigInteger hash = h0;
         for (int i = 0; i < inputStr.length(); i++) {
-            hash = ((hash.add(BigInteger.valueOf(alf.indexOf(inputStr.charAt(i)) + 1))).pow(2)).mod(n);
+            hash =
+                ((hash.add(BigInteger.valueOf(alf.indexOf(inputStr.charAt(i)) + 1))).pow(2)).mod(n);
         }
         return hash;
     }
