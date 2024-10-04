@@ -8,6 +8,62 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
+            "mainClass": "digital_signature.Main",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "hash.Main",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "hash_digital_signature.Main",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "rsa_hash_digital_signature.Main",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "rsa.Main",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "GOST28147",
+            "request": "launch",
+            "mainClass": "gost.GOST28147",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "gost.Main",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "kursach.Main",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
             "mainClass": "lab5_1.Main",
             "projectName": "Java_3_course_bb6f0ec4"
         },
