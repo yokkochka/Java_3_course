@@ -14,17 +14,17 @@ public class Main {
         BigInteger q = scanner.nextBigInteger();
 
         BigInteger n = p.multiply(q);
-        System.out.println("n: " + n);
+        // System.out.println("n: " + n);
 
         BigInteger fi_n =
             p.subtract(BigInteger.valueOf(1)).multiply(q.subtract(BigInteger.valueOf(1)));
-        System.out.println("fi_n: " + fi_n);
+        // System.out.println("fi_n: " + fi_n);
 
         BigInteger d = find_d(fi_n);
-        System.err.println("d: " + d);
+        // System.err.println("d: " + d);
 
         BigInteger e = find_e(d, fi_n);
-        System.out.println("e: " + e);
+        // System.out.println("e: " + e);
 
         System.out.println("private keys: " + d + " " + n);
         System.out.println("public keys: " + e + " " + n);

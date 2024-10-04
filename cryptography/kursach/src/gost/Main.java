@@ -64,14 +64,14 @@ public class Main {
             System.out.println("String to encrypt: " + inputString);
             System.out.println("The first 4 bits of the key for the first cycle: " + key);
 
-            System.out.println("Binary string: " + binString.toString());
-            System.out.println("Binary string: " + x0String.toString());
+            // System.out.println("Binary string: " + binString.toString());
+            // System.out.println("Binary string: " + x0String.toString());
 
             String l0String = binString.substring(0, 32);
             String r0String = binString.substring(32, 64);
 
             String mod2_32 = summaMod2_32(r0String, x0String);
-            System.out.println("mod2_32: " + mod2_32);
+            // System.out.println("mod2_32: " + mod2_32);
 
             String fR0X0 = "";
 
@@ -82,13 +82,13 @@ public class Main {
                 fR0X0 += intToBinString(binToInt, intToInt.get(i)[j]);
             }
 
-            System.out.println("Substitution: " + fR0X0);
+            // System.out.println("Substitution: " + fR0X0);
 
             fR0X0 = fR0X0.substring(11, fR0X0.length()) + fR0X0.substring(0, 11);
-            System.out.println("Circle: " + fR0X0);
+            // System.out.println("Circle: " + fR0X0);
 
             String r1String = xor(l0String, fR0X0);
-            System.out.println("r1: " + r1String);
+            // System.out.println("r1: " + r1String);
 
             System.out.println("Encrypted string(L1 + R1): " + r0String + r1String);
         }
