@@ -10,6 +10,7 @@
     ],
 
     "java.project.referencedLibraries": [
-        "/Users/yokko/Github/Java_3_course/cryptography/lab4/lib/bcprov-jdk18on-1.78.1.jar"
+        "/Users/yokko/Github/Java_3_course/cryptography/lab4/lib/bcprov-jdk18on-1.78.1.jar",
+        "cryptography/lab4/lib/bcprov-jdk18on-1.78.1.jar"
     ]
 }
