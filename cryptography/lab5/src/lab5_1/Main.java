@@ -1,9 +1,10 @@
 package lab5_1;
+
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import java.security.*;
 import java.util.Base64;
 
-public class RSASignatureExample {
+public class Main{
 
     public static void main(String[] args) throws Exception {
         Security.addProvider(new BouncyCastleProvider());
