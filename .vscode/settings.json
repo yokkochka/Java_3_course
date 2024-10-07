@@ -5,7 +5,8 @@
         "cryptography/lab3/src",
         "cryptography/lab4/scr",
         "cryptography/lab5/src",
-        "cryptography/kursach/src"
+        "cryptography/kursach/src",
+        "cryptography/lab6/src"
     ],
 
     "java.project.referencedLibraries": [

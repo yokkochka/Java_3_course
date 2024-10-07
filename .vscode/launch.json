@@ -8,6 +8,13 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
+            "mainClass": "lab6_1.Main",
+            "projectName": "Java_3_course_bb6f0ec4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
             "mainClass": "digital_signature.Main",
             "projectName": "Java_3_course_bb6f0ec4"
         },
