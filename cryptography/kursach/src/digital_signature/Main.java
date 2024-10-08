@@ -32,22 +32,22 @@ public class Main {
         System.out.print("Enter hash function: ");
         BigInteger hash_function = scanner.nextBigInteger();
 
-        BigInteger s = digital_signature(hash_function, e, n);
+        BigInteger s = digital_signature(hash_function, d, n);
         System.err.println("Digital signature: " + s);
 
-        BigInteger has_function_restored = has_function_restored(s, d, n);
+        BigInteger has_function_restored = has_function_restored(s, e, n);
         System.out.println("Restored hash function: " + has_function_restored);
 
         scanner.close();
     }
 
     public static BigInteger digital_signature(
-        BigInteger hash_function, BigInteger e, BigInteger n) {
-        return hash_function.pow(e.intValue()).mod(n);
+        BigInteger hash_function, BigInteger d, BigInteger n) {
+        return hash_function.pow(d.intValue()).mod(n);
     }
 
-    public static BigInteger has_function_restored(BigInteger s, BigInteger d, BigInteger n) {
-        return s.pow(d.intValue()).mod(n);
+    public static BigInteger has_function_restored(BigInteger s, BigInteger e, BigInteger n) {
+        return s.pow(e.intValue()).mod(n);
     }
 
     public static BigInteger find_d(BigInteger fi_n) {
